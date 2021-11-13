@@ -8,9 +8,9 @@ const routes = require('./routes/route');
 const app = express();
 
 app.use(helmet());
-app.use(logger('common', {
+/*app.use(logger('common', {
     stream: fs.createWriteStream('./log/access.log', {flags: 'a'})
-}));
+}));*/
 app.use(logger('dev'));
 app.use(express.json());
 app.use('/pictures', serveIndex('./assets/pics', {icon: true}));
