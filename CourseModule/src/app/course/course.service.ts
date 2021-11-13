@@ -8,9 +8,7 @@ import { map } from 'rxjs/operators';
 export class CourseService {
   url: string = "http://localhost:4000/course/";
 
-  constructor(private http: HttpClient) { }
-
-  
+  constructor(private http: HttpClient) { }  
 
   getData() {
     let myHeaders = new Headers();
