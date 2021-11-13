@@ -9,7 +9,7 @@ const app = express();
 
 app.use(helmet());
 app.use(logger('common', {
-    stream: fs.createWriteStream('./log/access.log', {flags: 'a'})
+    stream: fs.createWriteStream('./src/main/log/access.log', {flags: 'a'})
 }));
 app.use(logger('dev'));
 app.use(express.json());
