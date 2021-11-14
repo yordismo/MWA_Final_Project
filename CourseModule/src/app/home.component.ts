@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <p>
       home works!
     </p>
+    
   `,
   styles: [
   ]

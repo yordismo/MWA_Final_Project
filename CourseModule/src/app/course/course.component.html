@@ -26,6 +26,11 @@
   </table>
 
 
-
+    <div *ngFor="let presentation of data" class="col-2 card"  style=" display: inline-block; margin: 10px; ">
+        <a [routerLink]="['/presentation', presentation._id]">
+        <div class="card-block"  style="height: 200px;width: 200px; text-align: center; ">
+          {{presentation.name}}        </div>
+        </a>
+    </div>
 
   

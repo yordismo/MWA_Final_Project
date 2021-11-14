@@ -11,6 +11,7 @@ app.use(helmet());
 app.use(logger('common', {
     stream: fs.createWriteStream('./src/main/log/access.log', {flags: 'a'})
 }));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use('/pictures', serveIndex('./assets/pics', {icon: true}));
