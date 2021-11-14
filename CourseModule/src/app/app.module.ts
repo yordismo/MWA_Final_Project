@@ -1,29 +1,29 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-//import { CourseComponent } from './course/course.component';
-import { HomeComponent } from './home.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 @NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ComponentsModule,
+    RouterModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
-     HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([
-      {path: "", component: HomeComponent},
-      {path: "course", loadChildren: () => import('./course/course.module').then(m => m.CourseModule)},
-    ])
+    AdminLayoutComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
-  
-
