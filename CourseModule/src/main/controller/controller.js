@@ -36,6 +36,11 @@ const verify = function verifyStudentObject(course) {
         course.hasOwnProperty("code") ;
 };
 
+const addMultipleCourses = (req, res, next) => {
+    console.log(req.body);
+    courseRepository.addMultipleCourses(req.body);
+    res.status(201).json(courseRepository.getAll());
+}
 
 const storage = multer.diskStorage(
     {
@@ -60,11 +65,10 @@ const upload = multer({
 });
 */
 
-
 const handleUpload=(req, res) => {
     console.log(req.file);
     res.json(req.file);
 }
 
 
-module.exports = { handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName};
+module.exports = { handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName, addMultipleCourses};
