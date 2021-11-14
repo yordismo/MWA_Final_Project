@@ -27,16 +27,10 @@ const deleteCourseId =  async (req, res, next) => {
 };
 
 const addCourse = (req, res, next) => {
-    console.log(req.body);
-    if (verify(req.body)) {
         courseRepository.addCourse(req.body);
         res.status(201).json(req.body);
-    }
-    else {
-        next({ msg: 'Invalid data' });
-    }
 };
-
+/*
 const verify = function verifyStudentObject(course) {
     return course.hasOwnProperty("name") &&
         course.hasOwnProperty("code") ;
@@ -48,7 +42,7 @@ const addMultipleCourses = (req, res, next) => {
     res.status(201).json(courseRepository.getAll());
 }
 
-/*const storage = multer.diskStorage(
+const storage = multer.diskStorage(
     {
         destination: './assets/pics/',
         filename: function ( req, file, cb ) {

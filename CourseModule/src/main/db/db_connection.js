@@ -1,9 +1,9 @@
 const mongoClient = require("mongodb").MongoClient;
 const db_name = "course";
-const db_url = 'mongodb://127.0.0.1:27017/' + db_name;
-
+//const db_url = 'mongodb://127.0.0.1:27017/' + db_name;
+const db_url = 'mongodb+srv://mongoD:mongoD@cluster0.1xlhi.mongodb.net/course?retryWrites=true&w=majority';
 async function dbConnection(callback){
-    console.log("Run in");
+
 
     let _connection = null;
 
@@ -13,6 +13,8 @@ async function dbConnection(callback){
             return;
         }
         _connection = client.db(db_name);
+        console.log("Run in");
+
         callback(_connection)
     });
 
