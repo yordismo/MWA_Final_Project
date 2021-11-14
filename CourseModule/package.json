@@ -4,8 +4,6 @@
   "scripts": {
     "ng": "ng",
     "startBackEnd": "node ./src/main/main.js",
-    "startFrontEnd": "npm start",
-    "start": "npm-run-all --parallel startBackEnd startFrontEnd",
     "start1": "ng serve",
     "start": "npm-run-all --parallel startBackEnd start1",
     "build": "ng build",
