@@ -25,6 +25,12 @@ async function addCourse(course){
     console.log(dataSet);
 }
 
+async function addMultipleCourses(courses){
+    let courseCollection = db.collection("courseList");
+    let dataSet = await courseCollection.insertMany(courses);
+    console.log(dataSet);
+}
+
 async function deleteById(_id){
     var id = new require('mongodb').ObjectID(_id);
     let courseCollection = db.collection("courseList");
@@ -40,7 +46,7 @@ async function searchByName(name){
     return dataSet
 }
 
-module.exports = {addCourse, getAll, getById, deleteById,searchByName};
+module.exports = {addCourse, getAll, getById, deleteById,searchByName, addMultipleCourses};
 
 
 
