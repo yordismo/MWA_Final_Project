@@ -1,0 +1,15 @@
+GET http://localhost:4000/course/ HTTP/1.1
+
+###
+GET http://localhost:4000/course/search/Tolganay HTTP/1.1
+
+###
+GET http://localhost:4000/course/618ea55f9a02601ba5ef7fdc HTTP/1.1
+
+###
+DELETE  http://localhost:4000/course/61906c8f99d90bc460c25ce1 HTTP/1.1
+###
+POST  http://localhost:4000/course HTTP/1.1
+content-type: application/json
+
+{ "name":"MWA", "code":"CS569"}
