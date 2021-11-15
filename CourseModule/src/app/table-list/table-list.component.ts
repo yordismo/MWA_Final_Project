@@ -11,7 +11,34 @@ export class TableListComponent implements OnInit {
 
   constructor(private tableservice) { };
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getData();
+
+  }
+  deleteRow(id: string) {
+    this.tableservice.deleteData(id).subscribe(
+      res => { this.getData() },
+      err => this.handleError(err)
+    );
+
+  }
+
+  getData() {
+    this.tableservice.getData().subscribe(
+      res => this.handleResponse(res),
+      err => this.handleError(err),
+    );
+  }
+  addRow() { }
+  editRow(id: string) { }
+
+  handleResponse(res: any) {
+    this.data = res;
+    console.log(this.data);
+  }
+
+  handleError(err: any) {
+    console.log({ err });
   }
 
 }

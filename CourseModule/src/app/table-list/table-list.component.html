@@ -28,14 +28,14 @@
                 <button type="button" class="btn btn-danger" (click)="deleteRow(item._id)">Delete</button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" (click)="editRow(item._id)">patch</button>
+                <button type="button" class="btn btn-warning" (click)="editRow(item._id)">patch</button>
             </td>
-            <td>
-                <button type="button" class="btn btn-danger" (click)="addRow(item._id)">post</button>
-            </td>
+
             <!--<td>
             <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
             </td>-->
         </tr>
     </tbody>
 </table>
+
+<button type="button" class="btn" (click)="addRow()">post</button>
