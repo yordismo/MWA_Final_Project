@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -21,7 +22,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService,) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -32,4 +33,11 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+  
+  signOut() {
+    clearInterval(parseInt(sessionStorage.getItem('userTimerId'), 10));
+    this.tokenStorage.signOut();
+    window.location.reload();
+}
 }

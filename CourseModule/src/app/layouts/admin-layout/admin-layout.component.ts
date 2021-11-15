@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 import 'rxjs/add/operator/filter';
 
 @Component({
@@ -8,9 +10,12 @@ import 'rxjs/add/operator/filter';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() {}
+  constructor(private router: Router, private tokenStorage: TokenStorageService) {}
 
   ngOnInit() {
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigateByUrl("/login");
+  }
   }
 
 }

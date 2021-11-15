@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigateByUrl("/login");
+  }
   }
 
 }
