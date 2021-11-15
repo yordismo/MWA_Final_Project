@@ -21,20 +21,33 @@
                                       Course-code
                                   </th>
                                   <th>
-                                      year
-                                  </th>
+                                    Month
+                                </th>
                                   <th>
-                                      month
+                                      Year
                                   </th>
+                                 
+                                  <th>
+                                    Faculty
+                                </th>
+                                <th>
+                                    Capacity
+                                </th>
+                                <th>
+                                    Enrolled
+                                </th>
+                                <th>
+                                    Description
+                                </th>
                               </thead>
                               <tbody>
                             
                                <tr *ngFor="let item of data; let i = index">
                                     <td>{{i+1}}</td>
                                     <td>{{item.name}}</td>
-                                    <td>{{item.code}}</td>   
+                                    <td>{{item.code}}</td>  
+                                    <td>{{item.blockEntry.month}}</td> 
                                     <td>{{item.blockEntry.year}}</td>
-                                    <td>{{item.blockEntry.month}}</td>
                                     <td>{{item.faculty}}</td>
                                     <td>{{item.capacity}}</td>
                                     <td>{{item.enrolled}}</td>
