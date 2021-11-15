@@ -27,90 +27,12 @@ content-type: application/json
   "description": "Fundamentals of OO Programming"
 }
 
-###
 
-POST http://localhost:4000/course/addMultiple HTTP/1.1
+###
+POST http://localhost:4000/course/  HTTP/1.1
 content-type: application/json
 
-[
-  {
-    "name": "Fundamental Programming Practices",
-    "code": "CS390",
-    "blockEntry": {
-      "year": 2021,
-      "month": 5
-    },
-    "faculty": "Obinna Kalu",
-    "capacity": 34,
-    "enrolled": 28,
-    "description": "Programming"
-  }, {
-  "name": "Modern Programming Practices",
-  "code": "CS401",
-  "blockEntry": {
-    "year": 2021,
-    "month": 8
-  },
-  "faculty": "Anthony Sander",
-  "capacity": 30,
-  "enrolled": 40,
-  "description": "Fundamentals of OO Programming"
-}, {
-  "name": "Web Programming",
-  "code": "CS472",
-  "blockEntry": {
-    "year": 2021,
-    "month": 11
-  },
-  "faculty": "Bruce Lester",
-  "capacity": 28,
-  "enrolled": 27,
-  "description": " Web Programming"
-}, {
-  "name": "Modern Web Application",
-  "code": "CS572",
-  "blockEntry": {
-    "year": 2021,
-    "month": 11
-  },
-  "faculty": "Asaad Saad",
-  "capacity": 37,
-  "enrolled": 36,
-  "description": " Modern Web Programming"
-}, {
-  "name": "Mobile Device Programming",
-  "code": "CS473",
-  "blockEntry": {
-    "year": 2021,
-    "month": 10
-  },
-  "faculty": "Renuka Mohanraj",
-  "capacity": 35,
-  "enrolled": 20,
-  "description": " Mobile Device Programming"
-},{
-  "name": "Algorithms",
-  "code": "CS435",
-  "blockEntry": {
-    "year": 2021,
-    "month": 10
-  },
-  "faculty": "Emdad Khan",
-  "capacity": 32,
-  "enrolled": 30,
-  "description": " Algorithms Programming"
-},{
-  "name": "Database Management Systems",
-  "code": "CS422",
-  "blockEntry": {
-    "year": 2021,
-    "month": 5
-  },
-  "faculty": "Joseph Lerman",
-  "capacity": 32,
-  "enrolled": 32,
-  "description": " Database Management Systems"
-},{
+{
   "name": "Enterprise Architecture",
   "code": "CS544",
   "blockEntry": {
@@ -123,3 +45,91 @@ content-type: application/json
   "description": " Algorithms Programming"
 }
 
+
+###
+POST http://localhost:4000/course/  HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Database Management Systems",
+  "code": "CS422",
+  "blockEntry": {
+    "year": 2021,
+    "month": 5
+  },
+  "faculty": "Joseph Lerman",
+  "capacity": 32,
+  "enrolled": 32,
+  "description": " Database Management Systems"
+}
+
+###
+POST http://localhost:4000/course/  HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Mobile Device Programming",
+  "code": "CS473",
+  "blockEntry": {
+    "year": 2021,
+    "month": 10
+  },
+  "faculty": "Renuka Mohanraj",
+  "capacity": 35,
+  "enrolled": 20,
+  "description": " Mobile Device Programming"
+}
+
+
+###
+
+POST http://localhost:4000/course/  HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Web Programming",
+  "code": "CS472",
+  "blockEntry": {
+    "year": 2021,
+    "month": 11
+  },
+  "faculty": "Bruce Lester",
+  "capacity": 28,
+  "enrolled": 27,
+  "description": " Web Programming"
+}
+###
+
+POST http://localhost:4000/course/  HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Algorithms",
+  "code": "CS435",
+  "blockEntry": {
+    "year": 2021,
+    "month": 10
+  },
+  "faculty": "Emdad Khan",
+  "capacity": 32,
+  "enrolled": 30,
+  "description": " Algorithms Programming"
+  }
+###
+POST http://localhost:4000/course/  HTTP/1.1
+content-type: application/json
+
+
+
+   {
+  "name": "Modern Web Application",
+  "code": "CS572",
+  "blockEntry": {
+    "year": 2021,
+    "month": 11
+  },
+  "faculty": "Asaad Saad",
+  "capacity": 37,
+  "enrolled": 36,
+  "description": " Modern Web Programming"
+   }
