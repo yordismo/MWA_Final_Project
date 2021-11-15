@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 import { TableListService } from './table-list.service';
 
 @Component({
@@ -9,33 +11,35 @@ import { TableListService } from './table-list.service';
 export class TableListComponent implements OnInit {
   public data: any;
 
-  constructor(private tableservice) { };
+  constructor(public tablelistservice: TableListService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getData();
-
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigateByUrl("/login");
+    }
+    this.getData()
   }
-  deleteRow(id: string) {
-    this.tableservice.deleteData(id).subscribe(
+  deleteRow(id: any) {
+    this.tablelistservice.deleteData(id).subscribe(
       res => { this.getData() },
-      err => this.handleError(err)
+      (err: any) => console.log(err)
     );
-
   }
-
   getData() {
-    this.tableservice.getData().subscribe(
+    this.tablelistservice.getData().subscribe(
       res => this.handleResponse(res),
-      err => this.handleError(err),
-    );
+      (err: any) => console.log(err),
+    )
   }
-  addRow() { }
-  editRow(id: string) { }
-
   handleResponse(res: any) {
     this.data = res;
     console.log(this.data);
   }
+
+  addRow() { }
+  editRow(id: string) { }
+
+
 
   handleError(err: any) {
     console.log({ err });

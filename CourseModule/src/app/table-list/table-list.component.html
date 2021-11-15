@@ -1,41 +1,73 @@
-<h2>List of Course</h2>
-<br>
-<table class="table">
-    <caption>List of course</caption>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Course blockEntry</th>
-            <th scope="col">Course name</th>
-            <th scope="col">Course code</th>
-            <th scope="col">Course capacity</th>
-            <th scope="col">Course enrolled</th>
-            <th scope="col">description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of data; let i = index">
-            <td>{{i+1}}</td>
-            <td>{{item.blockEntry}}</td>
-            <td>{{item.blockEntry.year}}</td>
-            <td>{{item.blockEntry.month}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.code}}</td>
-            <td>{{item.capacity}}</td>
-            <td>{{item.enrolled}}</td>
-            <td>{{item.description}}</td>
-            <td>
-                <button type="button" class="btn btn-danger" (click)="deleteRow(item._id)">Delete</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-warning" (click)="editRow(item._id)">patch</button>
-            </td>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Course Table</h4>
+                        <p class="card-category"> Here is course table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Course-Name
+                                    </th>
+                                    <th>
+                                        Course-code
+                                    </th>
+                                    <th>
+                                        Month
+                                    </th>
+                                    <th>
+                                        Year
+                                    </th>
 
-            <!--<td>
-            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-            </td>-->
-        </tr>
-    </tbody>
-</table>
+                                    <th>
+                                        Faculty
+                                    </th>
+                                    <th>
+                                        Capacity
+                                    </th>
+                                    <th>
+                                        Enrolled
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                </thead>
+                                <tbody>
 
-<button type="button" class="btn" (click)="addRow()">post</button>
+                                    <tr *ngFor="let item of data; let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.code}}</td>
+                                        <td>{{item.blockEntry.month}}</td>
+                                        <td>{{item.blockEntry.year}}</td>
+                                        <td>{{item.faculty}}</td>
+                                        <td>{{item.capacity}}</td>
+                                        <td>{{item.enrolled}}</td>
+                                        <td>{{item.description}}</td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="deleteRow(item._id)">Delete</button>
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
