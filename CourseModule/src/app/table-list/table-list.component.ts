@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 import { TableListService } from './table-list.service';
@@ -9,32 +9,45 @@ import { TableListService } from './table-list.service';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-  public data:any;
+  public data: any;
 
-  constructor(public tablelistservice:TableListService, private tokenStorage: TokenStorageService,private router: Router) { }
+  constructor(
+    public tablelistservice: TableListService,
+    private tokenStorage: TokenStorageService,
+    private router: Router) { }
 
-  ngOnInit() :void{
+  ngOnInit(): void {
     if (!this.tokenStorage.getToken()) {
       this.router.navigateByUrl("/login");
-  }
+    }
     this.getData()
   }
-  deleteRow(id: any){
+  deleteRow(id: any) {
     this.tablelistservice.deleteData(id).subscribe(
-      res=>{this.getData()},
-      (err:any)=>console.log(err)
+      res => { this.getData() },
+      (err: any) => console.log(err)
     );
   }
-  getData(){
+  getData() {
     this.tablelistservice.getData().subscribe(
-      res=>this.handleResponse(res),
-      (err:any)=>console.log(err),
+      res => this.handleResponse(res),
+      (err: any) => console.log(err),
     )
   }
-  handleResponse(res:any){
-    this.data=res;
-    console.log(this.data);
 
+
+  addRow() { }
+  editRow(id: string) {
+    this.router.navigateByUrl('/editCourse/' + id);
+  }
+
+
+  handleResponse(res: any) {
+    this.data = res;
+    console.log(this.data);
+  }
+  handleError(err: any) {
+    console.log({ err });
   }
 
 }

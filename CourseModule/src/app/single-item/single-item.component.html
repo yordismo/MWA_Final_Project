@@ -1,0 +1,35 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div [formGroup]="this.courseForm">
+                <h2>Course</h2>
+
+                <label for="name">Name: </label>
+                <input id="name" type="text" formControlName="name">
+
+                <label for="code">Code: </label>
+                <input id="code" type="text" formControlName="code">
+                <div formGroupName="blockEntry">
+                    <label for="year">year: </label>
+                    <input id="year" type="text" formControlName="year">
+
+                    <label for="month">month: </label>
+                    <input id="month" type="text" formControlName="month">
+                </div>
+                <label for="faculty">faculty: </label>
+                <input id="faculty" type="text" formControlName="faculty">
+
+                <label for="capacity">capacity: </label>
+                <input id="capacity" type="text" formControlName="capacity">
+
+                <label for="enrolled">enrolled: </label>
+                <input id="enrolled" type="text" formControlName="enrolled">
+
+                <label for="description">description: </label>
+                <input id="description" type="text" formControlName="description">
+
+                <button (click)="save()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
