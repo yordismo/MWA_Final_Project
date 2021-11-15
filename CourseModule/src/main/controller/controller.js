@@ -31,10 +31,20 @@ const addCourse = (req, res, next) => {
         res.status(201).json(req.body);
 };
 
+const addMultipleCourses = (req, res, next) => {
+    courseRepository.addMultipleCourses(req.body);
+    res.status(201).json(req.body);
+}
+
+const patchCourse = (req, res, next) => {
+    courseRepository.patchCourseById(req.params.id, req.body);
+    res.status(201).json(req.body);
+};
+
 const handleUpload=(req, res) => {
     console.log(req.file);
     res.json(req.file);
 }
 
 
-module.exports = { handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName};
+module.exports = { handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};

@@ -52,6 +52,10 @@
                                         <td>{{item.capacity}}</td>
                                         <td>{{item.enrolled}}</td>
                                         <td>{{item.description}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning"
+                                                (click)="editRow(item._id)">Edit</button>
+                                        </td>
 
                                         <td>
                                             <button type="button" class="btn btn-danger"

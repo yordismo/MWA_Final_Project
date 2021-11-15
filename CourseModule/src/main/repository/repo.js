@@ -25,13 +25,29 @@ async function addCourse(course){
     console.log(dataSet);
 }
 
+async function addMultipleCourses(courses){
+    let courseCollection = db.collection("courseList");
+    let dataSet = await courseCollection.insertMany(courses);
+    console.log(dataSet);
+}
+
 async function deleteById(_id){
     var id = new require('mongodb').ObjectID(_id);
     let courseCollection = db.collection("courseList");
     let dataSet = await courseCollection.deleteOne({"_id": id});
     console.log(dataSet);
 }
-
+async function patchCourseById(_id, course){
+    var id = new require('mongodb').ObjectID(_id);
+    let courseCollection = db.collection("courseList");
+    if ('_id' in course) {
+        delete course._id;
+    }
+    await courseCollection.updateOne(
+        {"_id": id},
+        {$set: course}
+    );
+}
 
 async function searchByName(name){
     let courseCollection = db.collection("courseList");
@@ -40,7 +56,7 @@ async function searchByName(name){
     return dataSet
 }
 
-module.exports = {addCourse, getAll, getById, deleteById,searchByName};
+module.exports = {addCourse, getAll, getById, deleteById,searchByName, patchCourseById, addMultipleCourses};
 
 
 

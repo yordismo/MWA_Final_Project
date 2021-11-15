@@ -13,18 +13,18 @@ export class SingleItemService {
   constructor(private http: HttpClient) { }
 
 
-  getData() {
+  getData(id: any) {
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    return this.http.get(this.url)
-      .pipe(map((res: any) => res));
+    return this.http.get(this.url + id)
+      .pipe(map((res: any) => res))
   }
 
 
-  patchData(id: string) {
+  patchData(id: string, data: any) {
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    return this.http.patch(this.url + id)
+    return this.http.patch(this.url + id, data)
       .pipe(map((res: any) => res));
   }
 }
