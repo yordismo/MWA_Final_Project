@@ -39,6 +39,9 @@
                                     <th>
                                         Description
                                     </th>
+                                    <th>
+                                        Actions
+                                    </th>
                                 </thead>
                                 <tbody>
 
@@ -55,16 +58,10 @@
                                         <td>
                                             <button type="button" class="btn btn-warning"
                                                 (click)="editRow(item._id)">Edit</button>
-                                        </td>
-
-                                        <td>
-                                            <button type="button" class="btn btn-danger"
+                                                <button type="button" class="btn btn-danger"
                                                 (click)="deleteRow(item._id)">Delete</button>
                                         </td>
                                     </tr>
-
-
-
                                 </tbody>
                             </table>
                             <td>

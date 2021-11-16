@@ -1,9 +1,18 @@
 
 const courseRepository = require('../repository/repo');
-const multer = require('multer');
 const path = require('path');
 
 
+
+const getCourseDictionaryById =async (req, res) => {
+    const results = await courseRepository.getAllCourseDictionaryId(req.params.id);
+    res.status(200).json(results)
+};
+
+const getCourseDictionary =async (req, res) => {
+    const results = await courseRepository.getAllCourseDictionary();
+    res.status(200).json(results)
+};
 
 const getAllCourse =async (req, res) => {
     const results = await courseRepository.getAll();
@@ -47,4 +56,4 @@ const handleUpload=(req, res) => {
 }
 
 
-module.exports = { handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};
+module.exports = {getCourseDictionaryById,getCourseDictionary, handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};

@@ -31,4 +31,15 @@ export class TableListService {
      
      //return this.http.delete(this.url+id).pipe(map((res:any)=>res));
    }
+
+   getCourseDictData(){
+    let header=new Headers();
+    header.append('Content-Type','application/json');
+    return this.http.get(this.url+'course-dictionary').pipe(map((res:any)=>res));
+  }
+  getCourseDictDataById(id:any){
+    let header=new Headers();
+    header.append('Content-Type','application/json');
+    return this.http.get(this.url+'course-dictionary-id/'+id).pipe(map((res:any)=>res));
+  }
 }

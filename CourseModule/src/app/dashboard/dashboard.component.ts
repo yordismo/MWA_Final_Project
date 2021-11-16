@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'app/auth/_services/token-storage.service';
+import { TableListService } from 'app/table-list/table-list.service';
 import * as Chartist from 'chartist';
+import Chart from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +12,36 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public data:any;
+  public canvas : any;
+  public ctx:any;
+  colors=["card text-white bg-primary","card text-white bg-secondary","card text-white bg-danger","card text-white bg-success","card text-white bg-secondary","card text-white bg-success","card text-white bg-primary","card text-white bg-secondary","card text-white bg-danger","card text-white bg-success","card text-white bg-secondary","card text-white bg-success","card text-white bg-primary"];
 
-  constructor(private tokenStorage: TokenStorageService,private router: Router) { }
+  materials: any;
+  randomItem: string;
+  constructor(public tablelistservice:TableListService,private tokenStorage: TokenStorageService,private router: Router,private http:HttpClient) { }
+  getColor(i:any){
+  
+    return this.colors[i];
+ }
+  getData(){
+    this.tablelistservice.getCourseDictData().subscribe(
+      res=>this.handleResponse(res),
+      (err:any)=>console.log(err),
+    )
+  }
+  handleResponse(res:any){
+    this.data=res;
+    
+    console.log(this.data);
 
-
+  }
   ngOnInit() {
     if (!this.tokenStorage.getToken()) {
-      this.router.navigateByUrl("/login");        }
+      this.router.navigateByUrl("/login");        
+    }
+    this.getData();
+    this.getColor(1);
 
 
     const dataDailySalesChart: any = {
@@ -60,12 +86,103 @@ export class DashboardComponent implements OnInit {
 
 
     const datawebsiteViewsChart = {
+      labels: ['February', 'May', 'August', 'November'],
+      series: [
+          [100,150, 130, 96]
+      ]
+    }
+    
+    this.canvas = document.getElementById("chartLineRed");
+    this.ctx = this.canvas.getContext("2d");
+
+    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(233,32,16,0.2)');
+    gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); //red colors
+
+    var data = {
+      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      datasets: [{
+        label: "Data",
+        fill: true,
+        backgroundColor: gradientStroke,
+        borderColor: '#ec250d',
+        borderWidth: 2,
+        borderDash: [],
+        borderDashOffset: 0.0,
+        pointBackgroundColor: '#ec250d',
+        pointBorderColor: 'rgba(255,255,255,0)',
+        pointHoverBackgroundColor: '#ec250d',
+        pointBorderWidth: 20,
+        pointHoverRadius: 4,
+        pointHoverBorderWidth: 15,
+        pointRadius: 4,
+        data: [80, 100, 70, 80, 120, 80],
+      }]
+    };
+
+    var myChart = new Chart(this.ctx, {
+      type: 'line',
+      data: data,
+      options: gradientChartOptionsConfigurationWithTooltipRed
+    });
+
+    var gradientChartOptionsConfigurationWithTooltipRed: any = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest"
+      },
+      responsive: true,
+      scales: {
+        yAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            suggestedMin: 60,
+            suggestedMax: 125,
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }],
+
+        xAxes: [{
+          barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(233,32,16,0.1)',
+            zeroLineColor: "transparent",
+          },
+          ticks: {
+            padding: 20,
+            fontColor: "#9a9a9a"
+          }
+        }]
+      }
+    };
+    /*
+    {
       labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
       series: [
         [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
       ]
-    };
+    };*/
     const optionswebsiteViewsChart = {
         axisX: {
             showGrid: false

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
@@ -15,6 +14,7 @@ import { LoginComponent } from 'app/auth/login/login.component';
 import { RegisterComponent } from 'app/auth/register/register.component';
 import { SingleItemComponent } from 'app/single-item/single-item.component';
 import { NewItemComponent } from 'app/new-item/new-item.component';
+import { DetailedCourseComponent } from 'app/detailed-course/detailed-course.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,11 +30,11 @@ import { NewItemComponent } from 'app/new-item/new-item.component';
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
     LoginComponent,
     RegisterComponent,
     SingleItemComponent,
-    NewItemComponent
+    NewItemComponent,
+    DetailedCourseComponent
   ]
 })
 
