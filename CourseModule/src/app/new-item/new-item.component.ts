@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewItemService } from './new-item.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 @Component({
   selector: 'app-new-item',
   templateUrl: './new-item.component.html',
@@ -13,6 +14,7 @@ export class NewItemComponent implements OnInit {
   courseForm: FormGroup;
 
   constructor(private newItemService: NewItemService,
+    private tokenStorage: TokenStorageService,
     private formBuilder: FormBuilder,
     private router: Router) {
     this.courseForm = this.formBuilder.group({
@@ -30,6 +32,9 @@ export class NewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigateByUrl("/login");
+    }
   }
 
   save() {

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SingleItemService } from './single-item.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TokenStorageService } from 'app/auth/_services/token-storage.service';
 
 @Component({
   selector: 'app-single-item',
@@ -15,6 +16,7 @@ export class SingleItemComponent implements OnInit {
   courseForm: FormGroup;
 
   constructor(private singleItemService: SingleItemService,
+    private tokenStorage: TokenStorageService,
     private activeatedRouter: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router) {
@@ -47,6 +49,9 @@ export class SingleItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigateByUrl("/login");
+    }
     this.itemId = this.activeatedRouter.snapshot.paramMap.get("courseId");
     this.getData(this.itemId);
   }
