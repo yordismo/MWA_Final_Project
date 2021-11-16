@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SingleItemService } from './single-item.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -16,7 +16,8 @@ export class SingleItemComponent implements OnInit {
 
   constructor(private singleItemService: SingleItemService,
     private activeatedRouter: ActivatedRoute,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private router: Router) {
     this.courseForm = this.formBuilder.group({
       name: [''],
       code: [''],
@@ -57,6 +58,8 @@ export class SingleItemComponent implements OnInit {
     let formData = this.courseForm.value;
     this.updateCurrentData(formData);
     this.updateCourse();
+    alert("Successfully updated");
+    this.router.navigateByUrl('/table-list');
   }
   updateCurrentData(formData) {
     this.data.name = formData.name;
