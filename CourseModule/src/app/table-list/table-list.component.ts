@@ -36,7 +36,9 @@ export class TableListComponent implements OnInit {
   }
 
 
-  addRow() { }
+  addRow() {
+    this.router.navigateByUrl('/addCourse');
+  }
   editRow(id: string) {
     this.router.navigateByUrl('/editCourse/' + id);
   }

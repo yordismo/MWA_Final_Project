@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { SingleItemComponent } from './single-item/single-item.component';
+import { NewItemComponent } from './new-item/new-item.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SingleItemComponent } from './single-item/single-item.component';
     AppComponent,
     AdminLayoutComponent,
     SingleItemComponent,
+    NewItemComponent,
 
   ],
   providers: [],
