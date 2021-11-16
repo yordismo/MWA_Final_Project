@@ -17,10 +17,18 @@ export class TableListService {
      header.append('Content-Type','application/json');
      return this.http.get(this.url).pipe(map((res:any)=>res));
    }
+   addData(item:any){
+    let header=new Headers();
+    header.append('Content-Type','application/json');
+    return this.http.post(this.url,JSON.stringify(item)).pipe(map((res:any)=>res))
+  }
+
 
    deleteData(id:any){
      let header=new Headers();
      header.append('Content-Type','application/json');
-     return this.http.delete(this.url+id).pipe(map((res:any)=>res));
+     return this.http.delete(this.url+id)
+     
+     //return this.http.delete(this.url+id).pipe(map((res:any)=>res));
    }
 }
