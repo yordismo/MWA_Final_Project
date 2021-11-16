@@ -23,10 +23,7 @@ import { NewItemComponent } from './new-item/new-item.component';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-    SingleItemComponent,
-    NewItemComponent,
-
+    AdminLayoutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

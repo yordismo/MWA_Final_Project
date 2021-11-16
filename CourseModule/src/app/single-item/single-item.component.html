@@ -1,79 +1,78 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div [formGroup]="this.courseForm">
-                <h2>Course</h2>
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="name">Name: </label>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Edit Course info</h4>
+                        <p class="card-category">Please fill all the course information</p>
                     </div>
-                    <div class="col-md-8">
-                        <input class="form-control" id="name" type="text" formControlName="name">
-                    </div>
-                </div>
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="code">Code: </label>
-                    </div>
-                    <div class="col-md-8">
-                        <input class="form-control" id="code" type="text" formControlName="code">
-                    </div>
-                </div>
+                    <div class="card-body">
+                        <form [formGroup]="this.courseForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="name" id="name" placeholder="Name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="code" id="code" placeholder="Code">
+                                    </mat-form-field>
+                                </div>
+                            </div>
 
-                <div formGroupName="blockEntry">
-                    <div class="input-group input-group-outline my-3">
-                        <div class="col-md-4">
-                            <label class="form-label" for="year">year: </label>
-                        </div>
-                        <div class="col-md-8">
-                            <input class="form-control" id="year" type="text" formControlName="year">
-                        </div>
-                    </div>
-                    <div class="input-group input-group-outline my-3">
-                        <div class="col-md-4">
-                            <label class="form-label" for="month">month: </label>
-                        </div>
-                        <div class="col-md-8">
-                            <input class="form-control" id="month" type="text" formControlName="month">
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="faculty">faculty: </label>
-                    </div>
-                    <div class="col-md-8">
-                        <input class="form-control" id="faculty" type="text" formControlName="faculty">
-                    </div>
-                </div>
+                            <div formGroupName="blockEntry" class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="year" id="year" placeholder="Block entry year">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="month" id="month"
+                                            placeholder="Block entry month">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="faculty" id="faculty" placeholder="Faculty">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="capacity" id="capacity" placeholder="Capacity">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="enrolled" id="enrolled" placeholder="Enrolled">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <textarea matInput placeholder="Course description" id="description"
+                                            formControlName="description"></textarea>
+                                    </mat-form-field>
 
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="capacity">capacity: </label>
-                    </div>
-                    <div class="col-md-8">
-                        <input class="form-control" id="capacity" type="text" formControlName="capacity">
+                                </div>
+                            </div>
+                            <button class="btn btn-success" (click)="save()">Save</button>
+                        </form>
                     </div>
                 </div>
-
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="enrolled">enrolled: </label>
-                    </div>
-                    <div class="col-md-8">
-                        <input class="form-control" id="enrolled" type="text" formControlName="enrolled">
-                    </div>
-                </div>
-                <div class="input-group input-group-outline my-3">
-                    <div class="col-md-4">
-                        <label class="form-label" for="description">description: </label>
-                    </div>
-                    <div class="col-md-8">
-                        <textarea class="form-control" id="description" formControlName="description"> </textarea>
-                    </div>
-                </div>
-                <button class="btn btn-success" (click)="save()">Save</button>
             </div>
         </div>
     </div>
+
 </div>
