@@ -20,7 +20,7 @@ export class DetailedCourseComponent implements OnInit {
   }
 
   getDataById(id:any){
-    this.tablelistservice.getCourseDictDataById(id).subscribe(
+    this.tablelistservice.getDataById(id).subscribe(
       res=>this.handleResponse(res),
       (err:any)=>console.log(err),
     )

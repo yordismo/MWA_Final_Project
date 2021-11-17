@@ -1,28 +1,28 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-        <div  *ngFor="let presentation of data; let i = index " class="col-md-3" [routerLink]="['/course-detailed/'+presentation._id]" >
+        <div  *ngFor="let presentation of data; let i = index " class="col-md-3" [routerLink]="['/course-detailed/'+presentation.__id]" >
             <div  [ngClass]="getColor(i)" style="height: 130px;  vertical-align: auto; text-align: center; font-size: large; font-weight: 400;" >
                     <div class="card-header"></div>                
                 
                     <div class="card-body">
-                          <p class="card-text">{{presentation.course_name}}</p>
+                          <p class="card-text">{{presentation._id}}</p>
                     </div>
             </div>
         </div>
     </div>
         <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card card-chart">
                 <div class="card-header card-header-success">
                     <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Daily Sales</h4>
+                    <h4 class="card-title">Number of students in 2021 by entry</h4>
                 </div>
             </div>
         </div>
-            <div class="col-md-6">
+        <!--<div class="col-md-6">
             <div class="card card-chart">
                 <div class="card-header card-header-danger">
                     <div class="ct-chart" id="completedTasksChart"></div>
@@ -31,7 +31,7 @@
                     <h4 class="card-title">Completed Tasks</h4>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
  
   </div>

@@ -9,6 +9,16 @@ const getAggregations =async (req, res) => {
 };
 
 
+const getAggregationsChart =async (req, res) => {
+    const results = await courseRepository.getAggregation();
+    res.status(200).json(     
+      
+            [12, 17, 7, 17, 23, 18, 38]
+        
+    )
+};
+
+
 const getCourseDictionaryById =async (req, res) => {
     const results = await courseRepository.getAllCourseDictionaryId(req.params.id);
     res.status(200).json(results)
@@ -61,4 +71,4 @@ const handleUpload=(req, res) => {
 }
 
 
-module.exports = {getAggregations,getCourseDictionaryById,getCourseDictionary, handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};
+module.exports = {getAggregationsChart,getAggregations,getCourseDictionaryById,getCourseDictionary, handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};

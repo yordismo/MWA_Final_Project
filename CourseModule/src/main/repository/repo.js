@@ -10,20 +10,37 @@ const agg = [{
       }},{
       $project : 
         { _id: 1, __id: 1 } 
-
-      }
-     
-    
+      }        
   ];
 
+/***{ 
+        labels: ['February', 'May', 'August', 'November'], 
+        series: [ 
+            [100,150, 130, 96] 
+        ] 
+    } */
+  const agg1 = [{
+    $group: {
+        _id: '$name', __id: { $first: "$_id" }
+      }},{
+      $project : 
+        {"labels":{ _id: 1}, "series":{ __id: 1} } 
+      }        
+  ];
 
 async function getAggregation(){
     let courseCollection = db.collection("courseList");
-    let dataSet = await courseCollection.aggregate(agg).toArray();/*findOne({'_id': id});*/
+    let dataSet = await courseCollection.aggregate(agg).toArray();
     console.log(dataSet);
     return dataSet;
 }
 
+async function getAggregationChart(){
+    let courseCollection = db.collection("courseList");
+    let dataSet = await courseCollection.aggregate(agg1).toArray();
+    console.log(dataSet);
+    return dataSet;
+}
 
 async function getAllCourseDictionaryId(_id){
     var id = new require('mongodb').ObjectID(_id);

@@ -18,11 +18,19 @@ export class DashboardComponent implements OnInit {
   colors=["card text-white bg-primary","card text-white bg-secondary","card text-white bg-danger","card text-white bg-success","card text-white bg-secondary","card text-white bg-success","card text-white bg-primary","card text-white bg-secondary","card text-white bg-danger","card text-white bg-success","card text-white bg-secondary","card text-white bg-success","card text-white bg-primary"];
 
   materials: any;
+  dataChart:any;
   randomItem: string;
   constructor(public tablelistservice:TableListService,private tokenStorage: TokenStorageService,private router: Router,private http:HttpClient) { }
   getColor(i:any){
   
     return this.colors[i];
+ }
+
+ getDataCharts1(){
+  this.tablelistservice.getDataCharts().subscribe(
+    res=>this.handleResponse(res),
+    (err:any)=>console.log(err),
+  )
  }
   getData(){
     this.tablelistservice.getCourseDictData().subscribe(
@@ -41,22 +49,21 @@ export class DashboardComponent implements OnInit {
       this.router.navigateByUrl("/login");        
     }
     this.getData();
-    this.getColor(1);
-
-
+      this.getColor(1);
     const dataDailySalesChart: any = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-            [12, 17, 7, 17, 23, 18, 38]
-        ]
-    };
+      labels: ['February', 'May', 'August', 'November'],
+      series: [
+        [100,150, 130, 96] 
+      ]
+  };
+
 
    const optionsDailySalesChart: any = {
         lineSmooth: Chartist.Interpolation.cardinal({
             tension: 0
         }),
         low: 0,
-        high: 50,
+        high: 200,
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
@@ -175,14 +182,6 @@ export class DashboardComponent implements OnInit {
         }]
       }
     };
-    /*
-    {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-      ]
-    };*/
     const optionswebsiteViewsChart = {
         axisX: {
             showGrid: false

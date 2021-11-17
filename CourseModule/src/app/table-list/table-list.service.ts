@@ -35,11 +35,24 @@ export class TableListService {
    getCourseDictData(){
     let header=new Headers();
     header.append('Content-Type','application/json');
-    return this.http.get(this.url+'course-dictionary').pipe(map((res:any)=>res));
+    return this.http.get(this.url+'aggregations').pipe(map((res:any)=>res));
   }
   getCourseDictDataById(id:any){
     let header=new Headers();
     header.append('Content-Type','application/json');
     return this.http.get(this.url+'course-dictionary-id/'+id).pipe(map((res:any)=>res));
   }
+
+  getDataById(id:any){
+    let header=new Headers();
+    header.append('Content-Type','application/json');
+    return this.http.get(this.url+id).pipe(map((res:any)=>res));
+  }
+
+  getDataCharts(){
+    let header=new Headers();
+    header.append('Content-Type','application/json');
+    return this.http.get(this.url+'charts').pipe(map((res:any)=>res));
+  }
+
 }
