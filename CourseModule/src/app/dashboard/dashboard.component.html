@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
         <div  *ngFor="let presentation of data; let i = index " class="col-md-3" [routerLink]="['/course-detailed/'+presentation.__id]" >
-            <div  [ngClass]="getColor(i)" style="height: 130px;  vertical-align: auto; text-align: center; font-size: large; font-weight: 400;" >
+            <div  [ngClass]="getColor(i)" style=" vertical-align: auto; text-align: center; font-size: large; font-weight: 400;" >
                     <div class="card-header"></div>                
                 
                     <div class="card-body">
