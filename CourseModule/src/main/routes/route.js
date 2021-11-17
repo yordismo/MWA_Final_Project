@@ -15,4 +15,6 @@ router.get("/search/:name", getCourseByName);
 router.get("/signUp", getCourseByName);
 router.get("/aggrega", get);
 router.patch("/:id", patchCourse)
+
+
 module.exports = { router };

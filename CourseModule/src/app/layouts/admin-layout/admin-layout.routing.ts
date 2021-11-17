@@ -8,13 +8,13 @@ import { SingleItemComponent } from 'app/single-item/single-item.component';
 import { NewItemComponent } from 'app/new-item/new-item.component';
 import { DetailedCourseComponent } from 'app/detailed-course/detailed-course.component';
 
-
 export const AdminLayoutRoutes: Routes = [
+
     { path: 'dashboard', component: DashboardComponent },
     { path: 'table-list', component: TableListComponent },
     { path: 'login', component: LoginComponent },
     { path: 'registration', component: RegisterComponent },
-    { path: 'editCourse/:courseId', component: SingleItemComponent },
-    { path: 'addCourse', component: NewItemComponent },
-    { path: 'course-detailed/:id', component: DetailedCourseComponent }
+    { path: 'editCourse/:courseId', component: SingleItemComponent},
+    { path: 'addCourse', component: NewItemComponent},
+    { path: 'course-detailed/:id', component: DetailedCourseComponent}
 ];
