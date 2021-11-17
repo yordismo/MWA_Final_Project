@@ -3,6 +3,11 @@ const courseRepository = require('../repository/repo');
 const path = require('path');
 
 
+const getAggregations =async (req, res) => {
+    const results = await courseRepository.getAggregation();
+    res.status(200).json(results)
+};
+
 
 const getCourseDictionaryById =async (req, res) => {
     const results = await courseRepository.getAllCourseDictionaryId(req.params.id);
@@ -56,4 +61,4 @@ const handleUpload=(req, res) => {
 }
 
 
-module.exports = {getCourseDictionaryById,getCourseDictionary, handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};
+module.exports = {getAggregations,getCourseDictionaryById,getCourseDictionary, handleUpload,getAllCourse, getCourseById,addCourse,deleteCourseId,getCourseByName,patchCourse, addMultipleCourses};

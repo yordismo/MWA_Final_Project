@@ -4,6 +4,27 @@ let db = database.dbConnection((dbObj) => {
     db = dbObj;
 });
 
+const agg = [{
+    $group: {
+        _id: '$name', __id: { $first: "$_id" }
+      }},{
+      $project : 
+        { _id: 1, __id: 1 } 
+
+      }
+     
+    
+  ];
+
+
+async function getAggregation(){
+    let courseCollection = db.collection("courseList");
+    let dataSet = await courseCollection.aggregate(agg).toArray();/*findOne({'_id': id});*/
+    console.log(dataSet);
+    return dataSet;
+}
+
+
 async function getAllCourseDictionaryId(_id){
     var id = new require('mongodb').ObjectID(_id);
     let courseCollection = db.collection("courseDictionary");
@@ -72,7 +93,7 @@ async function searchByName(name){
     return dataSet
 }
 
-module.exports = {getAllCourseDictionaryId,addCourse, getAll, getById, deleteById,searchByName, patchCourseById, addMultipleCourses,getAllCourseDictionary};
+module.exports = {getAggregation,getAllCourseDictionaryId,addCourse, getAll, getById, deleteById,searchByName, patchCourseById, addMultipleCourses,getAllCourseDictionary};
 
 
 
